@@ -11,10 +11,10 @@ public class Main
 
     int counter = 0;
     int currentNumber = 50;
-    while (sc.hasNext())  // as long as the Scanner has more lines to read from the file...
+    while (sc.hasNextLine())  // as long as the Scanner has more lines to read from the file...
     {
       String line = sc.nextLine();  // gets the next line of input.  This is like "R802"
-      int x = Integer.parseInt(line.substring(1,line.length()));
+      int x = Integer.parseInt(line.substring(1));
       String direction = line.substring(0, 1);
 
       if(direction.equals("L"))
@@ -24,23 +24,17 @@ public class Main
 
       currentNumber += x;
 
-      if(currentNumber < 0)
-      {
-        currentNumber = x + 100;
-      }
-      else if(currentNumber > 100)
-      {
-        currentNumber = x - 100;
-      }
+      currentNumber = ((currentNumber % 100) + 100) % 100;
 
       if(currentNumber == 0)
       {
         counter++;
       }
 
+      //System.out.println("The current number is " + currentNumber +"\n");
     }
 
-    System.out.println("The password is " + currentNumber);
+    System.out.println("The password is " + counter);
     sc.close();
   }
 }
