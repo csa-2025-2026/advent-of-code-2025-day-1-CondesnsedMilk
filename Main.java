@@ -23,6 +23,21 @@ public class Main
       }
 
       currentNumber += x;
+      int numTimeSpin = 0;
+      if(currentNumber < 0 && currentNumber > -100)
+      {
+          numTimeSpin++;
+      }
+      else if(currentNumber < -100)
+      {
+          numTimeSpin += Math.abs(currentNumber / 100);
+      }
+      else
+      {
+         numTimeSpin += Math.abs(currentNumber / 100);
+      }
+
+      counter += numTimeSpin;
 
       currentNumber = ((currentNumber % 100) + 100) % 100;
 
